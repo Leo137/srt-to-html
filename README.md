@@ -10,6 +10,9 @@ ruby srt_to_html.rb <sub_file.srt>
 
 Formats supported: SRT
 
+Example of how formatted HTML looks:
+
+![example image showcasing how generated HTML looks](./example.png)
 
 ### Arrows navigation
 
