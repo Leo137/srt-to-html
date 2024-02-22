@@ -62,7 +62,8 @@ def srt_to_html(input_file, output_file)
             // Check if the scroll position is past the current dialog
             if (scrollPosition < dialogOffset) {
               // Update the URL with the current dialog ID
-              window.location.hash = dialogs[i].id;
+              // window.location.hash = dialogs[i].id;
+              window.location.replace(window.location.host + window.location.pathname + '#' + dialogs[i].id)
               return;
             }
           }
@@ -77,7 +78,7 @@ def srt_to_html(input_file, output_file)
     </script>
   SCRIPT
 
-  srt_content.scan(/(\d+)[^\n]+\n(\d+:\d+:\d+,\d+) --> (\d+:\d+:\d+,\d+)[^\n]+\n(.*?)(?=\n\d|\z)/m) do |number, start_time, end_time, text|
+  srt_content.scan(/(\d+)\n(\d+:\d+:\d+,\d+) --> (\d+:\d+:\d+,\d+)[^\n]+\n(.*?)(?=\n\d|\z)/m) do |number, start_time, end_time, text|
     html_content += "  <div class='text-line' id='i#{number}'>\n"
     html_content += "    <div class='number'>#{number}</div>\n"
     html_content += "    <div class='timestamp'>#{start_time} --> #{end_time}</div>\n"
